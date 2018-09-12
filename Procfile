@@ -1,1 +1,1 @@
-web: gunicorn InstagramScrapper.wsgi --log-file -
+web: gunicorn InstagramScrapper.wsgi --log-file --timeout 9000
