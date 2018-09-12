@@ -1,0 +1,18 @@
+/*.second_row_input mat-form-field{
+  margin-right: 7.5%;
+}
+
+.second_row_input mat-form-field:last-child {
+  margin-right: 0px;
+}*/
+.insta-form-container{
+  margin: 0 25%;
+  padding: 1% 5%;
+}
+
+.insta-vision-table-container{
+  margin: 1% 2%;
+}
+.insta-vision-table{
+  width: 100%;
+}

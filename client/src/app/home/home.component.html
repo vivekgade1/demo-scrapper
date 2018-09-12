@@ -1,0 +1,73 @@
+<mat-progress-bar mode="{{httpService.progressBar.mode}}"></mat-progress-bar>
+<mat-card class="insta-form-container">
+  <form [formGroup] = "formData" (ngSubmit) = "onSubmitInstaVisionCrawler(formData.value)">
+    <div class="row">
+      <div class="col">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Enter valid instagram url..." formControlName="page_url">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row second_row_input">
+      <div class="col">
+        <mat-form-field>
+          <input matInput type="number" placeholder="Max number of posts." formControlName ="max_posts">
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field>
+          <input matInput placeholder="Image file. (*.xlsx)" formControlName ="images_file">
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field>
+          <input matInput placeholder="Comments file. (*.xlsx)" formControlName ="comments_file">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button mat-raised-button color="primary" type="submit" [disabled]="httpService.progressBar.mode == ProgressState.QUERY" >Submit</button>
+      </div>
+    </div>
+  </form>
+</mat-card>
+<mat-card class="insta-vision-table-container" *ngIf="instaVisionTableData != null && instaVisionTableData.length != 0 ">
+  <mat-card-title>Download Data</mat-card-title>
+  <mat-card-content>
+   <table class="insta-vision-table" mat-table [dataSource]="instaVisionTableData">
+
+       <ng-container matColumnDef="pos">
+    <th mat-header-cell *matHeaderCellDef > No. </th>
+    <td mat-cell *matCellDef="let element; let i = index"> {{i}} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="page_url">
+    <th mat-header-cell *matHeaderCellDef > Page URL </th>
+    <td mat-cell *matCellDef="let element"> {{element.page_url}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="max_posts">
+    <th mat-header-cell *matHeaderCellDef > Max Posts </th>
+    <td mat-cell *matCellDef="let element"> {{element.max_posts}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="comments_file_name">
+    <th mat-header-cell *matHeaderCellDef > Comments file name </th>
+    <td mat-cell *matCellDef="let element" ><a href="getComments?id={{element.comments_file}}">{{element.comments_file_name}}</a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="images_file_name">
+    <th mat-header-cell *matHeaderCellDef > Image Content file name </th>
+    <td mat-cell *matCellDef="let element"> <a href="getImageContent?id={{element.comments_file}}">{{element.images_file_name}}</a> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row ; let i = index; columns: displayColumns;"></tr>
+</table>
+  </mat-card-content>
+</mat-card>

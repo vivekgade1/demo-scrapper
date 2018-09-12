@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  height: 100%;
+}
+.background{
+  background: #E0E0CE;
+  position: absolute;
+  height: 92%;
+  width: 100%;
+}
+
+.main-header-container{
+  width: 90%;
+  margin:0 5%;
+}
+
+.nav-banner{
+  background: #AD343E;
+}
+.dark{
+  color: #000000;
+}
