@@ -39,7 +39,7 @@ class InstagramScrapper(object):
 
         # if self.CHROME_PATH is not None:
         try:
-            self.driver = webdriver..PhantomJS()
+            self.driver = webdriver.PhantomJS()
         except:
             logger.critical(">>>>>> Chrome driver not found. <<<<<<")
 
