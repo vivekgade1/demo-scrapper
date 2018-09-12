@@ -8,7 +8,6 @@ from selenium import webdriver
 from google.cloud import vision
 from google.cloud.vision import types
 from InstagramScrapper.settings import GOOGLE_CLOUD_CREDENTIALS
-import chromedriver_binary
 import logging
 
 logger = logging.getLogger('__instagram_scrapper__')
@@ -40,7 +39,7 @@ class InstagramScrapper(object):
 
         # if self.CHROME_PATH is not None:
         try:
-            self.driver = webdriver.Chrome()
+            self.driver = webdriver..PhantomJS()
         except:
             logger.critical(">>>>>> Chrome driver not found. <<<<<<")
 
